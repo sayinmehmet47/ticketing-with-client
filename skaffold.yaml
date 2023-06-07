@@ -13,6 +13,15 @@ build:
       docker:
         dockerfile: Dockerfile
 
+    - image: sayinmehmet47/client
+      context: client
+      sync:
+        manual:
+          - src: '**/*.tsx'
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+
 manifests:
   rawYaml:
     - ./infra/k8s/*

@@ -15,7 +15,7 @@ router.post(
     body('password')
       .trim()
       .notEmpty()
-      .withMessage('You must supply a password'),
+      .withMessage('You must supply a password for your account'),
   ],
   validateRequest,
   async (req: Request, res: Response) => {

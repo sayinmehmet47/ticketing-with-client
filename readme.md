@@ -15,3 +15,19 @@ kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 ```bash
 kubectl get secrets
 ```
+
+- to run client on kubernetes this steps has ben done
+  --- create a dockerfile
+
+```bash
+cd client
+docker build -t sayinmehmet47/client .
+docker push sayinmehmet47/client
+
+```
+
+- add secret to kubernetes
+
+```bash
+  kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdfdfdsaf
+```
