@@ -3,14 +3,14 @@ import { useState } from 'react';
 import { useRequest } from '@/hooks/use-request';
 import { useRouter } from 'next/navigation';
 
-export default function Signup() {
+export default function Signin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const router = useRouter();
 
   const { doRequest, errors } = useRequest({
-    url: '/api/users/signup',
+    url: '/api/users/signin',
     method: 'post',
     body: {
       email,
@@ -29,7 +29,7 @@ export default function Signup() {
       <div className="bg-grey-lighter min-h-screen flex flex-col">
         <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
           <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-            <h1 className="mb-8 text-3xl text-center">Sign up</h1>
+            <h1 className="mb-8 text-3xl text-center">Sign in</h1>
 
             <input
               type="text"
@@ -49,13 +49,20 @@ export default function Signup() {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            {errors && <span className="block sm:inline">{errors}</span>}
+            {errors && (
+              <div
+                className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                role="alert"
+              >
+                <span className="block sm:inline">{errors}</span>
+              </div>
+            )}
 
             <button
               type="submit"
               className="w-full text-center py-3 rounded bg-green-500 text-white hover:bg-green-dark focus:outline-none my-1"
             >
-              Create Account
+              Signin
             </button>
           </div>
         </div>
