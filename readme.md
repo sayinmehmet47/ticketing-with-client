@@ -26,8 +26,14 @@ docker push sayinmehmet47/client
 
 ```
 
-- add secret to kubernetes
+- publish npm package
 
-```bash
-  kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdfdfdsaf
+```code
+  npm publish --access public
+```
+
+- increment version
+
+```code
+  npm version patch
 ```

@@ -1,6 +1,6 @@
 import 'express-async-errors';
 import mongoose from 'mongoose';
-import { DatabaseConnectionError } from './errors/database-connection-error';
+import { DatabaseConnectionError } from '@sayinmehmet-ticketing/common';
 import { app } from './app';
 
 const start = async () => {
