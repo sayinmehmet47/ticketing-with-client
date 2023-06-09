@@ -22,6 +22,15 @@ build:
       docker:
         dockerfile: Dockerfile
 
+    - image: sayinmehmet47/tickets
+      context: tickets
+      sync:
+        manual:
+          - src: src/**/*.ts
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+
 manifests:
   rawYaml:
     - ./infra/k8s/*

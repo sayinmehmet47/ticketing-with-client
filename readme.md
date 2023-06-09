@@ -1,4 +1,15 @@
 - Go to auth directory and create the dockerfile, and build it
+
+```bash
+docker build -t sayinmehmet47/auth .
+```
+
+- push it to docker hub
+
+```bash
+docker push sayinmehmet47/auth
+```
+
 - create auth depl yaml file for kubernetes deployments and pods
 - run the skaffold yaml
 - for local add domain name use (code /etc/hosts)
