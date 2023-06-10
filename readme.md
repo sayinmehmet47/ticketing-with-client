@@ -48,3 +48,9 @@ docker push sayinmehmet47/client
 ```code
   npm version patch
 ```
+
+- port forwarding
+
+```code
+  kubectl port-forward <pod-name> 3000:3000
+```
