@@ -49,8 +49,8 @@ docker push sayinmehmet47/client
   npm version patch
 ```
 
-- port forwarding
+- port forwarding(forward the nat port to local port)
 
 ```code
-  kubectl port-forward <pod-name> 3000:3000
+  kubectl port-forward <pod-name> 4222:4222
 ```
