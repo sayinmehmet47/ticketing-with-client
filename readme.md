@@ -55,6 +55,12 @@ docker push sayinmehmet47/client
   kubectl port-forward <pod-name> 4222:4222
 ```
 
+- to open the kubernetes cluster to outside world install the ingress service, before start the skaffold dev
+
+```code
+ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/cloud/deploy.yaml
+```
+
 - son notlar
   in the last lecture we did publishing the classes for nats to npm
 - then now we will use this publish event classes in ticketing service
