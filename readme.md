@@ -54,3 +54,7 @@ docker push sayinmehmet47/client
 ```code
   kubectl port-forward <pod-name> 4222:4222
 ```
+
+- son notlar
+  in the last lecture we did publishing the classes for nats to npm
+- then now we will use this publish event classes in ticketing service
