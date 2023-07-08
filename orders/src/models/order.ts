@@ -3,7 +3,7 @@ import { OrderStatus } from '@sayinmehmet-ticketing/common';
 import { TicketDoc } from './ticket';
 
 interface OrderAttrs {
-  OrderId: string;
+  userId: string;
   status: OrderStatus;
   expiresAt: Date;
   ticket: TicketDoc;
@@ -22,7 +22,7 @@ interface OrderModel extends mongoose.Model<OrderDoc> {
 
 const orderSchema = new mongoose.Schema<OrderAttrs>(
   {
-    OrderId: {
+    userId: {
       type: String,
       required: true,
     },

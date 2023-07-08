@@ -11,6 +11,7 @@ import cookieSession from 'cookie-session';
 import { showOrderRouter } from './routes/show';
 import { deleteOrderRouter } from './routes/delete';
 import { indexOrderRouter } from './routes';
+import { newOrderRouter } from './routes/new';
 
 const app = express();
 app.set('trust proxy', true);
@@ -27,6 +28,7 @@ app.use(indexOrderRouter);
 app.use(currentUser);
 app.use(showOrderRouter);
 app.use(deleteOrderRouter);
+app.use(newOrderRouter);
 
 app.all('*', async (req, res) => {
   throw new NotFoundError();
