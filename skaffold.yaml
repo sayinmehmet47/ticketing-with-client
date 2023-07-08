@@ -31,6 +31,15 @@ build:
       docker:
         dockerfile: Dockerfile
 
+    - image: sayinmehmet47/orders
+      context: orders
+      sync:
+        manual:
+          - src: src/**/*.ts
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+
 manifests:
   rawYaml:
     - ./infra/k8s/*
