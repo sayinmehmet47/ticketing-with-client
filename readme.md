@@ -62,5 +62,4 @@ docker push sayinmehmet47/client
 ```
 
 - son notlar
-  in the last lecture we did publishing the classes for nats to npm
-- then now we will use this publish event classes in ticketing service
+  in the last lecture we created the order service and its tests. Now we need to emit some event using task in next lecture
