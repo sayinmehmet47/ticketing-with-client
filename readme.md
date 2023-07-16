@@ -61,5 +61,11 @@ docker push sayinmehmet47/client
  kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/cloud/deploy.yaml
 ```
 
+- to see mongodb in outside world
+
+```code
+  kubectl port-forward <pod-name> 27017:27017
+```
+
 - son notlar
   in the last lecture we created the order service and its tests. Now we need to emit some event using task in next lecture
