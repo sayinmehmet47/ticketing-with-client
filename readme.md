@@ -40,8 +40,8 @@ docker push sayinmehmet47/client
 - publish npm package
 
 ```code
-  npm publish --access public
   npm run pub
+  npm publish --access public
 ```
 
 - increment version
@@ -66,6 +66,17 @@ docker push sayinmehmet47/client
 
 ```code
   kubectl port-forward <pod-name> 27017:27017
+```
+
+- fix ingress issues
+
+```code
+   kubectl delete namespace ingress-nginx
+
+   kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/cloud/deploy.yaml
+
+
+
 ```
 
 - son notlar
