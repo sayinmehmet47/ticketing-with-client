@@ -41,6 +41,7 @@ docker push sayinmehmet47/client
 
 ```code
   npm publish --access public
+  npm run pub
 ```
 
 - increment version
