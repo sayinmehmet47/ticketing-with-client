@@ -1,20 +1,9 @@
-import 'express-async-errors';
-import mongoose from 'mongoose';
 import { DatabaseConnectionError } from '@sayinmehmet-ticketing/common';
-import { app } from './app';
+
 import { natsWrapper } from './nats-wrapper';
-import { TicketCreatedListener } from './events/listener/ticket-created-listener';
-import { TicketUpdatedListener } from './events/listener/ticket-updated-listener';
-import { ExpirationCompleteEventListener } from './events/listener/expiration-complete-listener';
+import { OrderCreatedListener } from './events/listeners/order-created-listener';
 
 const start = async () => {
-  if (!process.env.JWT_KEY) {
-    throw new Error('JWT_KEY must be defined');
-  }
-  if (!process.env.MONGO_URI) {
-    throw new Error('MONGO_URI must be defined');
-  }
-
   if (!process.env.NATS_URL) {
     throw new Error('NATS_URL must be defined');
   }
@@ -42,21 +31,12 @@ const start = async () => {
     process.on('SIGINT', () => natsWrapper.client.close());
     process.on('SIGTERM', () => natsWrapper.client.close());
 
-    await new TicketCreatedListener(natsWrapper.client).listen();
-    await new TicketUpdatedListener(natsWrapper.client).listen();
-    await new ExpirationCompleteEventListener(natsWrapper.client).listen();
-
-    await mongoose.connect(process.env.MONGO_URI);
-
-    console.log('Connected to MongoDB');
+    new OrderCreatedListener(natsWrapper.client).listen();
   } catch (error) {
     if (error instanceof DatabaseConnectionError) {
       throw new DatabaseConnectionError();
     }
   }
-  app.listen(3000, () => {
-    console.log('Listening on port 3000!');
-  });
 };
 
 start();

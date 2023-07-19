@@ -68,6 +68,12 @@ docker push sayinmehmet47/client
   kubectl port-forward <pod-name> 27017:27017
 ```
 
+- remove kubectl caches
+
+```code
+  rm -rf ~/.kube/cache
+```
+
 - fix ingress issues
 
 ```code

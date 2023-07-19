@@ -32,6 +32,7 @@ build:
         dockerfile: Dockerfile
 
     - image: sayinmehmet47/orders
+
       context: orders
       sync:
         manual:
@@ -39,6 +40,22 @@ build:
             dest: .
       docker:
         dockerfile: Dockerfile
+    - image: sayinmehmet47/expiration
+      context: expiration
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+    - image: sayinmehmet47/payments
+      context: payments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
 
 manifests:
   rawYaml:
