@@ -59,7 +59,7 @@ docker push sayinmehmet47/client
 - to open the kubernetes cluster to outside world install the ingress service, before start the skaffold dev
 
 ```code
- kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/cloud/deploy.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/cloud/deploy.yaml
 ```
 
 - to see mongodb in outside world
@@ -77,9 +77,9 @@ docker push sayinmehmet47/client
 - fix ingress issues
 
 ```code
-   kubectl delete namespace ingress-nginx
+kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 
-   kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/cloud/deploy.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.34.1/deploy/static/provider/cloud/deploy.yaml
 
 
 
