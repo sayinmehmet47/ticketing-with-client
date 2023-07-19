@@ -1,0 +1,165 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "ticketing",
+    "dateExported": "2023-07-19T12:51:06.383Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "a694705f-638b-44a8-90e2-4306fcbb7e08",
+            "colId": "096d02fe-d93b-4a96-a0a6-6651d976870d",
+            "containerId": "",
+            "name": "currentuser",
+            "url": "https://ticketing.dev/api/users/currentuser",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-05-28T14:51:35.013Z",
+            "modified": "2023-07-02T15:08:17.269Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "7745aae2-a126-4f88-a249-bca1a4d55d21",
+            "colId": "096d02fe-d93b-4a96-a0a6-6651d976870d",
+            "containerId": "",
+            "name": "signup",
+            "url": "https://ticketing.dev/api/users/signup",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-05-28T14:52:30.878Z",
+            "modified": "2023-07-15T12:40:33.734Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"sayinmehmet47@gmail.com\",\n  \"password\":\"12345\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "194d21aa-5423-43aa-9f8e-a75b117751c1",
+            "colId": "096d02fe-d93b-4a96-a0a6-6651d976870d",
+            "containerId": "",
+            "name": "signin",
+            "url": "https://ticketing.dev/api/users/signin",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-06-05T13:16:41.238Z",
+            "modified": "2023-07-15T12:40:41.102Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"sayinmehmet47@gmail.com\",\n  \"password\":\"12345\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9214851e-3d7f-4a85-85fc-65617993e48d",
+            "colId": "096d02fe-d93b-4a96-a0a6-6651d976870d",
+            "containerId": "",
+            "name": "signout",
+            "url": "https://ticketing.dev/api/users/signout",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-06-05T14:23:57.987Z",
+            "modified": "2023-06-05T14:25:30.809Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5540ca36-5fdc-4f2a-b5a9-0b90287e71de",
+            "colId": "096d02fe-d93b-4a96-a0a6-6651d976870d",
+            "containerId": "",
+            "name": "create-ticket",
+            "url": "https://ticketing.dev/api/tickets",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2023-06-09T14:26:33.071Z",
+            "modified": "2023-07-02T15:32:20.192Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\":\"concert-4\",\n  \"price\":250\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b2035e32-e79d-4049-9423-e8ebb6cba6fa",
+            "colId": "096d02fe-d93b-4a96-a0a6-6651d976870d",
+            "containerId": "",
+            "name": "findTicket",
+            "url": "https://ticketing.dev/api/tickets/64833bf0c0bfdefe8042fb7d",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2023-06-09T14:28:36.971Z",
+            "modified": "2023-06-09T14:49:36.549Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "cac9ba3b-0859-4626-be38-b95ccc66e31c",
+            "colId": "096d02fe-d93b-4a96-a0a6-6651d976870d",
+            "containerId": "",
+            "name": "updateTicket",
+            "url": "https://ticketing.dev/api/tickets/64b517f3278236474174c0f3",
+            "method": "PUT",
+            "sortNum": 90000,
+            "created": "2023-06-09T14:28:49.049Z",
+            "modified": "2023-07-17T10:29:36.077Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\":\"Newds Concse\",\n  \"price\":543\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "1cd764e9-2859-44fd-9b08-ef1f6946a875",
+            "colId": "096d02fe-d93b-4a96-a0a6-6651d976870d",
+            "containerId": "",
+            "name": "create-order",
+            "url": "https://ticketing.dev/api/orders",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2023-07-18T13:44:37.936Z",
+            "modified": "2023-07-18T14:55:15.029Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"ticketId\": \"64b6a7ca02129fd47be45f59\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "36c874b4-1669-4a1b-a496-d30b3f112270",
+            "colId": "096d02fe-d93b-4a96-a0a6-6651d976870d",
+            "containerId": "",
+            "name": "create-payment",
+            "url": "https://ticketing.dev/api/payments",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2023-07-19T11:36:41.676Z",
+            "modified": "2023-07-19T11:38:56.961Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
