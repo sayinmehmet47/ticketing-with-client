@@ -1,105 +1,64 @@
 import request from 'supertest';
+
 import { app } from '../../app';
-import { Ticket } from '../../models/ticket';
+import { Order } from '../../models/orders';
 import { natsWrapper } from '../../nats-wrapper';
+import mongoose from 'mongoose';
+import { OrderStatus } from '@sayinmehmet-ticketing/common';
 
-it('has a route handler listening to /api/tickets for post requests', async () => {
-  const response = await request(app).post('/api/tickets').send({});
-  expect(response.status).not.toEqual(404);
-});
-
-it('can only be accessed if the user is signed in', async () => {
-  await request(app).post('/api/tickets').send({}).expect(401);
-});
-
-it('returns a status other than 401 if the use is signed in', async () => {
+it('return 404 when purchasing that does not exist', async () => {
   const cookie = await global.signin();
 
   const response = await request(app)
-    .post('/api/tickets')
+    .post('/api/payments')
     .set('Cookie', cookie)
-    .send({});
-  expect(response.status).not.toEqual(401);
+    .send({
+      token: '1223456',
+      orderId: new mongoose.Types.ObjectId().toHexString(),
+    });
+  expect(response.status).toEqual(404);
 });
 
-it('returns an error if an invalid title is provided', async () => {
+it('returns a 401 when purchasing an order that does not belong to the user', async () => {
   const cookie = await global.signin();
 
-  await request(app)
-    .post('/api/tickets')
-    .set('Cookie', cookie)
-    .send({
-      title: '',
-      price: 10,
-    })
-    .expect(400);
+  const order = await Order.build({
+    id: new mongoose.Types.ObjectId().toHexString(),
+    userId: new mongoose.Types.ObjectId().toHexString(),
+    version: 0,
+    price: 20,
+    status: OrderStatus.Created,
+  }).save();
 
-  await request(app)
-    .post('/api/tickets')
+  const response = await request(app)
+    .post('/api/payments')
     .set('Cookie', cookie)
     .send({
-      price: 10,
-    })
-    .expect(400);
+      token: '1223456',
+      orderId: order.id,
+    });
+
+  expect(response.status).toEqual(401);
 });
 
-it('returns an error if an invalid price is provided', async () => {
-  const cookie = await global.signin();
+it('returns a 400 when purchasing a cancelled order', async () => {
+  const userId = new mongoose.Types.ObjectId().toHexString();
+  const cookie = await global.signin(userId);
 
-  await request(app)
-    .post('/api/tickets')
+  const order = await Order.build({
+    id: new mongoose.Types.ObjectId().toHexString(),
+    userId,
+    version: 0,
+    price: 20,
+    status: OrderStatus.Cancelled,
+  }).save();
+
+  const response = await request(app)
+    .post('/api/payments')
     .set('Cookie', cookie)
     .send({
-      title: 'sss',
-      price: -10,
-    })
-    .expect(400);
-
-  await request(app)
-    .post('/api/tickets')
-    .set('Cookie', cookie)
-    .send({
-      title: 'sss',
-    })
-    .expect(400);
-});
-
-it('create a ticket with valid inputs', async () => {
-  const cookie = await global.signin();
-
-  let tickets = await Ticket.find({});
-
-  expect(tickets.length).toEqual(0);
-
-  await request(app)
-    .post('/api/tickets')
-    .set('Cookie', cookie)
-    .send({
-      title: 'sss',
-      price: 20,
-    })
-    .expect(201);
-
-  tickets = await Ticket.find({});
-  expect(tickets.length).toEqual(1);
-  expect(tickets[0].price).toEqual(20);
-});
-
-it('publishes an event', async () => {
-  const cookie = await global.signin();
-
-  let tickets = await Ticket.find({});
-
-  expect(tickets.length).toEqual(0);
-
-  await request(app)
-    .post('/api/tickets')
-    .set('Cookie', cookie)
-    .send({
-      title: 'sss',
-      price: 20,
-    })
-    .expect(201);
-
-  expect(natsWrapper.client.publish).toHaveBeenCalled();
+      token: '1223456',
+      orderId: order.id,
+    });
+  expect(response.status).toEqual(400);
 });
