@@ -19,6 +19,7 @@ docker push sayinmehmet47/auth
 
 ```bash
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
+kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=sk_tes
 ```
 
 - to get the secrets
