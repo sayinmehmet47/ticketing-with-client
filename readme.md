@@ -13,6 +13,13 @@ docker push sayinmehmet47/auth
 - create auth depl yaml file for kubernetes deployments and pods
 - run the skaffold yaml
 - for local add domain name use (code /etc/hosts)
+- add
+
+```code
+127.0.0.1 ticketing.dev
+
+```
+
 - write (thisisunsafe) when browser says it is untrusted
 
 - creating a secret in kubernetes
@@ -60,6 +67,7 @@ docker push sayinmehmet47/client
 - to open the kubernetes cluster to outside world install the ingress service, before start the skaffold dev
 
 ```code
+
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/cloud/deploy.yaml
 ```
 
@@ -78,12 +86,21 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 - fix ingress issues
 
 ```code
+kubectl delete namespace ingress-nginx
+
 kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.34.1/deploy/static/provider/cloud/deploy.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/cloud/deploy.yaml
 
 
 
+```
+
+- fake token for stripe
+
+```code
+  tok_visa
 ```
 
 - son notlar

@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 
 jest.mock('../nats-wrapper');
+jest.mock('../stripe');
 
 let mongo: any;
 
