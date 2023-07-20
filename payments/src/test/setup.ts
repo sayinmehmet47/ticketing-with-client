@@ -3,9 +3,13 @@ import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 
 jest.mock('../nats-wrapper');
-jest.mock('../stripe');
+// jest.mock('../stripe');
 
 let mongo: any;
+
+// that is interesting when putting here it works but in line 16 it does not work
+process.env.STRIPE_KEY =
+  'sk_test_51LP6aiGCJMINMCUutTkanWinySHpVqdag6ZhnL2G8cWZC0zoJkd8tH7tMH7soLL7txd3U5MAR4hJVikOfJy69shE00pZM1aiVW';
 
 beforeAll(async () => {
   process.env.JWT_KEY = 'asdfasdf';
