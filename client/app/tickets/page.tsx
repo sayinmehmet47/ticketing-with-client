@@ -16,6 +16,7 @@ import { Input } from '@/components/ui/input';
 
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
+import { useRequest } from '@/hooks/use-request';
 
 const formSchema = z.object({
   title: z.string().min(2, {
@@ -35,10 +36,19 @@ const NewTicket = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+  const { doRequest, errors } = useRequest({
+    url: '/api/tickets',
+    method: 'post',
+    body: form.getValues(),
+    onSuccess: (ticket) => console.log(ticket),
+  });
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    await doRequest();
+
+    // Reset the form
+    form.reset();
   }
 
   return (
@@ -83,7 +93,11 @@ const NewTicket = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" variant="default">
+        <Button
+          type="submit"
+          variant="default"
+          isLoading={form.formState.isSubmitting}
+        >
           Submit
         </Button>
       </form>
