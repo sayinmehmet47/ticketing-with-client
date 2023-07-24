@@ -1,6 +1,7 @@
 'use client';
 import { useCurrentUser } from '@/app/current-user-context';
 import { useRequest } from '@/hooks/use-request';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 import StripeCheckout from 'react-stripe-checkout';
@@ -19,6 +20,7 @@ const TimeLeft = ({
   orderId: string;
 }) => {
   const [timeLeft, setTimeLeft] = useState('');
+  const router = useRouter();
   const currentUser = useCurrentUser();
 
   const { doRequest, errors } = useRequest({
@@ -27,8 +29,8 @@ const TimeLeft = ({
     body: {
       orderId,
     },
-    onSuccess: (payment) => {
-      console.log('payment', payment);
+    onSuccess: () => {
+      router.push('/orders');
     },
   });
 

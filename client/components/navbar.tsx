@@ -11,6 +11,8 @@ export default function NavBar() {
     !currentUser && { href: '/auth/signup', label: 'Sign Up' },
     !currentUser && { href: '/auth/signin', label: 'Sign In' },
     currentUser && { href: '/auth/signout', label: 'Sign Out' },
+    currentUser && { href: '/tickets', label: 'Create Ticket' },
+    currentUser && { href: '/orders', label: 'My Orders' },
   ]
     .filter((linkConfig) => linkConfig)
     .map(({ href, label }: any) => {
@@ -65,9 +67,9 @@ export default function NavBar() {
             </div>
           </div>
         </div>
-        <Link href="/tickets" className="text-blue-200">
+        {/* <Link href="/tickets" className="text-blue-200">
           Create Ticket
-        </Link>
+        </Link> */}
 
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">{links}</div>
