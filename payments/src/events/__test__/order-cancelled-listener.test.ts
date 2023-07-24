@@ -46,9 +46,9 @@ const setup = async () => {
 
 it('should cancel the order', async () => {
   const { listener, data, msg, order } = await setup();
-  await listener.onMessage(data, msg);
 
   expect(order.status).toEqual(OrderStatus.Created);
+  await listener.onMessage(data, msg);
 
   const updatedOrder = await Order.findById(order.id);
 
