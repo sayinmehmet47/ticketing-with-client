@@ -16,7 +16,7 @@ export default function Signup() {
       email,
       password,
     },
-    onSuccess: () => router.push('/'),
+    onSuccess: () => (window.location.href = '/'),
   });
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

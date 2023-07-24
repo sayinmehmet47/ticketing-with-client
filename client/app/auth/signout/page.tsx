@@ -5,13 +5,11 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 export default function Signout() {
-  const router = useRouter();
-
   const { doRequest } = useRequest({
     url: '/api/users/signout',
     method: 'post',
     body: {},
-    onSuccess: () => router.push('/'),
+    onSuccess: () => (window.location.href = '/'),
   });
 
   useEffect(() => {

@@ -7,8 +7,6 @@ export default function Signin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const router = useRouter();
-
   const { doRequest, errors } = useRequest({
     url: '/api/users/signin',
     method: 'post',
@@ -16,7 +14,7 @@ export default function Signin() {
       email,
       password,
     },
-    onSuccess: () => router.push('/'),
+    onSuccess: () => (window.location.href = '/'),
   });
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

@@ -1,6 +1,7 @@
 import './globals.css';
 import buildClient from './api/build-client';
 import NavBar from '../components/navbar';
+import { CurrentUserProvider } from './current-user-context';
 
 async function getData() {
   const { data } = await buildClient().get('/api/users/currentuser');
@@ -9,10 +10,8 @@ async function getData() {
 
 export default async function RootLayout({
   children,
-  text,
 }: {
   children: React.ReactNode;
-  text: string;
 }) {
   const data: {
     currentUser: {
@@ -25,8 +24,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NavBar currentUser={data.currentUser} />
-        {children}
+        <CurrentUserProvider currentUser={data.currentUser}>
+          <NavBar />
+          {children}
+        </CurrentUserProvider>
       </body>
     </html>
   );

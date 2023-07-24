@@ -11,11 +11,12 @@ interface UseRequestProps {
 export function useRequest({ url, method, body, onSuccess }: UseRequestProps) {
   const [errors, setErrors] = useState<React.ReactNode>();
 
-  const doRequest = async () => {
+  const doRequest = async (props = {}) => {
     try {
       setErrors(undefined);
-      const response = await axios[method](url, body);
+      const response = await axios[method](url, { ...body, ...props });
       if (onSuccess) onSuccess(response.data as any);
+
       return response.data;
     } catch (error: any) {
       setErrors(

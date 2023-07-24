@@ -1,16 +1,12 @@
+'use client';
+import { useCurrentUser } from '@/app/current-user-context';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-interface NavbarProps {
-  currentUser: {
-    id: string;
-    email: string;
-    iat: number;
-  };
-}
+export default function NavBar() {
+  const currentUser = useCurrentUser();
 
-export default function NavBar({ currentUser }: NavbarProps) {
   const links = [
     !currentUser && { href: '/auth/signup', label: 'Sign Up' },
     !currentUser && { href: '/auth/signin', label: 'Sign In' },
@@ -69,6 +65,10 @@ export default function NavBar({ currentUser }: NavbarProps) {
             </div>
           </div>
         </div>
+        <Link href="/tickets" className="text-blue-200">
+          Create Ticket
+        </Link>
+
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">{links}</div>
         </div>
