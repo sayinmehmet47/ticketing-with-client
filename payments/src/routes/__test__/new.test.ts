@@ -85,7 +85,7 @@ it('returns a 200 with valid inputs', async () => {
       token: 'tok_visa',
       orderId: order.id,
     })
-    .expect(200);
+    .expect(201);
 
   const stripeCharges = await stripe.charges.list({ limit: 50 });
 
