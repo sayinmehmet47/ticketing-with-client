@@ -4,11 +4,11 @@ import {
   OrderCancelledEvent,
 } from '@sayinmehmet-ticketing/common';
 import mongoose from 'mongoose';
-import { natsWrapper } from '../../nats-wrapper';
+import { natsWrapper } from '../../../nats-wrapper';
 
 import { Message } from 'node-nats-streaming';
-import { Order } from '../../models/orders';
-import { OrderCancelledListener } from '../order-cancelled-listener';
+import { Order } from '../../../models/orders';
+import { OrderCancelledListener } from '../../order-cancelled-listener';
 
 const setup = async () => {
   const listener = new OrderCancelledListener(natsWrapper.client);
