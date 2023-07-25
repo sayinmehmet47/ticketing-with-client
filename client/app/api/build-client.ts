@@ -6,8 +6,7 @@ export default function buildClient() {
 
   if (typeof window === 'undefined') {
     return axios.create({
-      baseURL:
-        'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+      baseURL: 'http://www.kitapkurdu.xyz/',
       headers: {
         Host: headersList.get('host'),
         Cookie: headersList.get('cookie'),
