@@ -131,3 +131,9 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
   ```code
   kubectl config use-context <context-name>
   ```
+
+- to get the logs of a pod
+
+  ```code
+  kubectl logs <pod-name>
+  ```
