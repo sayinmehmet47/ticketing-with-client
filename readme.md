@@ -105,3 +105,29 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 
 - son notlar
   in the last lecture we created the order service and its tests. Now we need to emit some event using task in next lecture
+
+- digital ocean notes
+
+  -- get the context
+
+  ```code
+  kubectl config get-contexts
+  ```
+
+  -- set the context
+
+  ```code
+  kubectl config use-context <context-name>
+  ```
+
+  -- view config
+
+  ```code
+  kubectl config view
+  ```
+
+  -- use context
+
+  ```code
+  kubectl config use-context <context-name>
+  ```
