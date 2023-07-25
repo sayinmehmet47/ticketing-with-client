@@ -15,7 +15,7 @@ app.use(
   cookieSession({
     signed: false,
     // when only make a https request, so in test environment, make it secure false but in production make it true
-    secure: process.env.NODE_ENV !== 'test',
+    secure: false,
   })
 );
 
