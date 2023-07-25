@@ -132,10 +132,14 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
   kubectl config use-context <context-name>
   ```
 
-
 - to get the logs of a pod
 
   ```code
   kubectl logs <pod-name>
   ```
 
+- if you have trouble with pod, you can describe it
+
+  ```code
+  kubectl describe pod expiration-depl-5f8f9f5f9f-4q9q2
+  ```
