@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 jest.mock('../nats-wrapper');
 // jest.mock('../stripe');
 
-let mongo: any;
+let mongo: MongoMemoryServer;
 
 // that is interesting when putting here it works but in line 16 it does not work
 process.env.STRIPE_KEY =
@@ -15,7 +15,7 @@ beforeAll(async () => {
   process.env.JWT_KEY = 'asdfasdf';
 
   mongo = await MongoMemoryServer.create();
-  const mongoUri = mongo.getUri();
+  const mongoUri = await mongo.getUri();
   await mongoose.connect(mongoUri, {});
 });
 
